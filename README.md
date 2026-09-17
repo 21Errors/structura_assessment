@@ -57,7 +57,7 @@ Invalid input returns `400` with validation details. Unknown action IDs return `
 
 ## AI Use
 
-Tools used: ChatGPT/Codex.
+Tools used: ChatGPT/Codex. Gemini
 
 Tasks assisted:
 
