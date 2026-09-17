@@ -46,7 +46,7 @@ Invalid input returns `400` with validation details. Unknown action IDs return `
 
 - Data is stored in memory, so created and updated records reset when the server restarts.
 - The supplied starter records are always loaded on first server start.
-- No paid services, paid APIs, private credentials, or external databases are required.
+- No paid services, paid APIs, private credentials, or external databases are required..
 - Overdue highlighting is based on the machine's current local date and excludes completed actions.
 
 ## Known Limitations
