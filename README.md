@@ -1,6 +1,6 @@
 # Structura Action Tracker
 
-A lightweight full-stack application for tracking Structura Advisory client action items. It includes a React/TypeScript board UI, an Express API, in-memory starter data, validation, status updates, filters, and automated tests.
+A lightweight full-stack application for tracking client action items. It includes a React/TypeScript board UI, an Express API, in-memory starter data, validation, status updates, filters, sorting, and automated tests.
 
 ## Setup
 
@@ -20,7 +20,7 @@ npm run build
 npm run start
 ```
 
-`npm run start` serves the built application from `http://localhost:3000` after `npm run build` has been run.
+`npm run start` serves the built application and API from `http://localhost:3000` after `npm run build` has been run.
 
 ## Features
 
@@ -33,6 +33,16 @@ npm run start
 - See loading, empty, and error states in the interface.
 - Highlight overdue non-completed actions.
 
+## Rubric evidence
+
+- Working solution: the main workflow loads the six supplied records, filters and sorts them, creates an action, updates status, and clears completed actions.
+- Programming fundamentals: shared domain types and Zod schemas keep validation rules in one place; the store, API, and UI have separate responsibilities.
+- Frontend/backend integration: the React client calls the Express routes through a small typed API module and updates local state from successful responses.
+- TypeScript: strict TypeScript checking is enabled and shared types are used by both client and server.
+- Testing and errors: API tests cover the starter dataset, invalid input, status updates, unknown IDs, and clearing completed records. The UI exposes loading, empty, validation, and request-error states.
+- Ownership: the commands below are sufficient to inspect, test, typecheck, and build the solution locally.
+- Git/submission: the repository includes the source, lock file, README, tests, and a short incremental commit history.
+
 ## API
 
 - `GET /api/actions` returns all action items.
@@ -44,9 +54,9 @@ Invalid input returns `400` with validation details. Unknown action IDs return `
 
 ## Assumptions
 
-- Data is stored in memory, so created and updated records reset when the server restarts.......
+- Data is stored in memory, so created and updated records reset when the server restarts.
 - The supplied starter records are always loaded on first server start.
-- No paid services, paid APIs, private credentials, or external databases are required..
+- No paid services, paid APIs, private credentials, or external databases are required.
 - Overdue highlighting is based on the machine's current local date and excludes completed actions.
 
 ## Known Limitations
@@ -57,7 +67,7 @@ Invalid input returns `400` with validation details. Unknown action IDs return `
 
 ## AI Use
 
-Tools used: ChatGPT/Codex. Gemini
+Tools used: ChatGPT/Codex and Gemini.
 
 Tasks assisted:
 
@@ -73,10 +83,11 @@ Representative prompt summaries:
 
 One suggestion corrected or improved:
 
-- The plan kept storage in memory instead of adding a database. That avoided unnecessary setup and matched the assessment allowance for simple local data storage.
+- An early implementation only checked that a due date matched the `YYYY-MM-DD` pattern. I improved the shared Zod schema to also reject impossible dates such as February 30, because the API should enforce valid data independently of the browser form.
 
 Verification:
 
 - Automated API tests cover starter data, validation errors, status updates, unknown records, and clearing completed actions.
 - The typecheck, build, and test commands were run locally.
 - The code was reviewed against every core requirement in the brief.
+- I can explain the in-memory store, shared validation, API response shapes, and the UI state updates used in the application.

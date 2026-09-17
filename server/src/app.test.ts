@@ -29,7 +29,7 @@ describe("actions API", () => {
         client: "",
         title: "Fix",
         owner: "",
-        dueDate: "18-09-2026",
+        dueDate: "2026-02-30",
         priority: "Urgent",
         status: "Open"
       })
